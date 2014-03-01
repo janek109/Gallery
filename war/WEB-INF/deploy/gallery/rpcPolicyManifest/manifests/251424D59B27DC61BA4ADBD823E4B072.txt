@@ -1,0 +1,2 @@
+serviceClass: com.jan.gallery.client.GreetingService
+path: 08D84A75C3088A13ABBD0F53C766E7C0.gwt.rpc
