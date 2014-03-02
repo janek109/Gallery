@@ -1,34 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
               http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         version="2.5"
-         xmlns="http://java.sun.com/xml/ns/javaee">
+	version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
 
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.jan.gallery.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/gallery/greet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>UploadFile</servlet-name>
-    <servlet-class>com.jan.gallery.server.>UploadFile</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>UploadFile</servlet-name>
-    <url-pattern>/gallery/uploadfile</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>Gallery.html</welcome-file>
-  </welcome-file-list>
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>greetServlet</servlet-name>
+		<servlet-class>com.jan.gallery.server.GreetingServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>greetServlet</servlet-name>
+		<url-pattern>/gallery/greet</url-pattern>
+	</servlet-mapping>
+
+	<!-- <servlet> <servlet-name>FileUploadServiceImpl</servlet-name> <servlet-class>com.jan.gallery.server.FileUploadServiceImpl</servlet-class> 
+		</servlet> <servlet-mapping> <servlet-name>FileUploadServiceImpl</servlet-name> 
+		<url-pattern>/gallery/fileupload</url-pattern> </servlet-mapping> -->
+
+	<context-param>
+		<param-name>maxSize</param-name>
+		<param-value>102400000</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>slowUploads</param-name>
+		<param-value>200</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>uploadServlet</servlet-name>
+		<servlet-class>com.jan.gallery.server.FileUploadServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>uploadServlet</servlet-name>
+		<url-pattern>*.gupld</url-pattern>
+	</servlet-mapping>
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>Gallery.html</welcome-file>
+	</welcome-file-list>
 
 </web-app>
